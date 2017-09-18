@@ -43,9 +43,9 @@ namespace MG_Motor_HostSof
             try
             {
                 SpdRef = tbx_SpdRef.Text;
-                if (Math.Abs((Convert.ToInt32(SpdRef))) > 20 || Math.Abs((Convert.ToInt32(SpdRef))) < 1)
+                if (Math.Abs((Convert.ToInt32(SpdRef))) > 80 || Math.Abs((Convert.ToInt32(SpdRef))) < 1)
                 {
-                    errorProvider_SpdRef.SetError(tbx_SpdRef, "请输入绝对值在1-20之间的数！");
+                    errorProvider_SpdRef.SetError(tbx_SpdRef, "请输入绝对值在1-80之间的数！");
                     SpdRef = null;
                     return;
                 }
@@ -71,9 +71,9 @@ namespace MG_Motor_HostSof
             try
             {
                 Acc = tbx_Acc.Text;
-                if (Math.Abs(Convert.ToInt16(Acc))>50||Math.Abs(Convert.ToInt16(Acc))<1)
+                if (Math.Abs(Convert.ToInt16(Acc))>80||Math.Abs(Convert.ToInt16(Acc))<10)
                 {
-                    errorProvider_Acc.SetError(tbx_Acc, "请输入绝对值在1~50之间的数");
+                    errorProvider_Acc.SetError(tbx_Acc, "请输入绝对值在10~80之间的数");
                     Acc = null;
                     return;
                 }
@@ -100,7 +100,7 @@ namespace MG_Motor_HostSof
             try
             {
                 SinPeak = tbx_SinPeak.Text;
-                SinFre = comboBox1.SelectedIndex.ToString();
+                SinFre = (comboBox1.SelectedIndex+1).ToString();
 
                 //检查幅值范围
                 if (Math.Abs(Convert.ToInt16(SinPeak)) > 60||Math.Abs(Convert.ToInt16(SinPeak))<0)

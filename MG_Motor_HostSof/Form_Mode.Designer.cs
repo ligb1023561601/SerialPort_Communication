@@ -38,6 +38,7 @@
             this.btn_Acc = new System.Windows.Forms.Button();
             this.tbx_Acc = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -53,7 +54,6 @@
             this.errorProvider_Fre = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider_Acc = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider_Combine = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -155,6 +155,15 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "正弦跟踪模式（3）";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(307, 73);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(119, 12);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "以2π为基频进行分频";
+            // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
@@ -164,17 +173,7 @@
             "3",
             "4",
             "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16"});
+            "6"});
             this.comboBox1.Location = new System.Drawing.Point(309, 50);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 20);
@@ -286,15 +285,6 @@
             // errorProvider_Combine
             // 
             this.errorProvider_Combine.ContainerControl = this;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(307, 73);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(137, 12);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "以1.85π为基频进行分频";
             // 
             // Form_Mode
             // 

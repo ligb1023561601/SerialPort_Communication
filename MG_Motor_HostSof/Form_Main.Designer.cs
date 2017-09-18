@@ -162,7 +162,7 @@
             series1.LegendText = "转速";
             series1.Name = "Series1";
             this.chart_Spd.Series.Add(series1);
-            this.chart_Spd.Size = new System.Drawing.Size(516, 736);
+            this.chart_Spd.Size = new System.Drawing.Size(516, 376);
             this.chart_Spd.TabIndex = 5;
             this.chart_Spd.Text = "chart1";
             this.chart_Spd.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart_Spd_MouseMove);
@@ -418,7 +418,6 @@
             this.chart_Torqe.Size = new System.Drawing.Size(516, 367);
             this.chart_Torqe.TabIndex = 18;
             this.chart_Torqe.Text = "chart1";
-            this.chart_Torqe.Visible = false;
             this.chart_Torqe.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart_Torqe_MouseMove);
             // 
             // btn_SetOrigin
