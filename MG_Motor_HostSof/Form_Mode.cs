@@ -16,10 +16,15 @@ namespace MG_Motor_HostSof
 
         public static string SpdRef;                    //速度给定  -1500~1500rpm
         public static string Acc;                       //加速度给定
-        public static string SinPeak;                   //正弦指令幅值    ±10v
+        public static char SinPeak;                   //正弦指令幅值    ±10v
         public static string SinFre;                    //正弦指令频率    1Hz以下
         public static string CombineSequence;           //组合模式的组合顺序
         public static string SwitchTime;                //组合模式的切换时间
+        public static char EvenDirection;
+        public static char EvenAmp;
+        public static char TriDirection;
+        public static char TriAmp;
+        public static char SineDir;
             
         public static int RunningMode = 0;              //0,监听；1，匀速；2，加速；3，正弦；4，组合;5,停机
         public static int CombineStateCnt;
@@ -43,14 +48,35 @@ namespace MG_Motor_HostSof
             try
             {
                 SpdRef = tbx_SpdRef.Text;
-                if (Math.Abs((Convert.ToInt32(SpdRef))) > 80 || Math.Abs((Convert.ToInt32(SpdRef))) < 1)
+                EvenAmp = Convert.ToChar(tbx_even_amp.Text);
+
+                if (Math.Abs(Convert.ToInt16(EvenAmp))>60)
                 {
-                    errorProvider_SpdRef.SetError(tbx_SpdRef, "请输入绝对值在1-80之间的数！");
+                    MessageBox.Show("输入的角度大于60°，请重新输入！");
+                }
+
+                if (Math.Abs((Convert.ToInt32(SpdRef))) > 80 || Math.Abs((Convert.ToInt32(SpdRef))) < 0)
+                {
+                    errorProvider_SpdRef.SetError(tbx_SpdRef, "请输入绝对值在0-80之间的数！");
                     SpdRef = null;
                     return;
                 }
                 else
                     errorProvider_SpdRef.Clear();
+
+                if (rb_even_posi.Checked)
+                {
+                    EvenDirection = (char)0;
+                }
+                else if (rb_even_neg.Checked)
+                {
+                    EvenDirection = (char)1;
+                }
+                else if (rb_even_whole.Checked)
+                {
+                    EvenDirection = (char)2;
+                }
+
                 RunningMode = 1;
                 this.Close();
             }
@@ -81,6 +107,24 @@ namespace MG_Motor_HostSof
                 {
                     errorProvider_Acc.Clear();
                 }
+                TriAmp = Convert.ToChar(tbx_tri_amp.Text);
+                if (Math.Abs(Convert.ToInt16(TriAmp))>60)
+                {
+                    MessageBox.Show("输入的角度大于60°，请重新输入！");
+                }
+
+                if (rb_tri_pos.Checked)
+                {
+                    TriDirection = (char)0;
+                }
+                else if (rb_tri_neg.Checked)
+                {
+                    TriDirection = (char)1;
+                }
+                else if (rb_tri_whole.Checked)
+                {
+                    TriDirection = (char)2;
+                }
                 RunningMode = 2;
                 this.Close();
             }
@@ -99,19 +143,30 @@ namespace MG_Motor_HostSof
         {
             try
             {
-                SinPeak = tbx_SinPeak.Text;
+                SinPeak = Convert.ToChar(tbx_SinPeak.Text);
                 SinFre = (comboBox1.SelectedIndex+1).ToString();
 
                 //检查幅值范围
                 if (Math.Abs(Convert.ToInt16(SinPeak)) > 60||Math.Abs(Convert.ToInt16(SinPeak))<0)
                 {
                     errorProvider_SpdRef.SetError(tbx_SinPeak, "请输入在0~60之间的数！");
-                    SinPeak = null;
                     return;
                 }
                 else
                     errorProvider_SpdRef.Clear();
 
+                if (rb_sine_pos.Checked)
+                {
+                    SineDir = (char)0;
+                }
+                else if (rb_sine_neg.Checked)
+                {
+                    SineDir = (char)1;
+                }
+                else if (rb_sine_whole.Checked)
+                {
+                    SineDir = (char)2;
+                }
                 RunningMode = 3;
                 this.Close();
             }
@@ -137,7 +192,7 @@ namespace MG_Motor_HostSof
 
                     SpdRef = tbx_SpdRef.Text;
                     Acc = tbx_Acc.Text;
-                    SinPeak = tbx_SinPeak.Text;
+                    SinPeak = Convert.ToChar(tbx_SinPeak);
                     SinFre = comboBox1.SelectedIndex.ToString();
 
                     if (!Sequence.Contains(CombineSequence))
@@ -174,7 +229,6 @@ namespace MG_Motor_HostSof
                     if (Math.Abs(Convert.ToInt16(SinPeak)) > 60)
                     {
                         errorProvider_SpdRef.SetError(tbx_SinPeak, "请输入绝对值在0~60之间的数！");
-                        SinPeak = null;
                         return;
                     }
                     else

@@ -80,6 +80,50 @@ namespace MG_Motor_HostSof
             chart_Torqe.ChartAreas[0].CursorY.IsUserSelectionEnabled = true;
             chart_Torqe.ChartAreas[0].CursorY.LineColor = Color.Blue;
 
+            chart_Angle.Titles.Add("功角曲线");
+            chart_Angle.ChartAreas[0].AxisX.Enabled = AxisEnabled.True;
+            chart_Angle.ChartAreas[0].AxisY.Enabled = AxisEnabled.True;
+            chart_Angle.ChartAreas[0].AxisX.Name = "时间";
+            chart_Angle.ChartAreas[0].AxisY.Name = "功角";
+            chart_Angle.ChartAreas[0].AxisX.Title = "时间";
+            chart_Angle.ChartAreas[0].AxisY.Title = "功角 °";
+            chart_Angle.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
+            chart_Angle.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
+            chart_Angle.ChartAreas[0].AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dot;
+
+            chart_Angle.ChartAreas[0].CursorX.AutoScroll = true;
+            chart_Angle.ChartAreas[0].CursorX.IsUserEnabled = true;
+            chart_Angle.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
+            chart_Angle.ChartAreas[0].CursorX.LineColor = Color.Blue;
+            chart_Angle.ChartAreas[0].AxisX.ScrollBar.IsPositionedInside = true;
+
+            chart_Angle.ChartAreas[0].CursorY.AutoScroll = true;
+            chart_Angle.ChartAreas[0].CursorY.IsUserEnabled = true;
+            chart_Angle.ChartAreas[0].CursorY.IsUserSelectionEnabled = true;
+            chart_Angle.ChartAreas[0].CursorY.LineColor = Color.Blue;
+
+            chart_Force.Titles.Add("力曲线");
+            chart_Force.ChartAreas[0].AxisX.Enabled = AxisEnabled.True;
+            chart_Force.ChartAreas[0].AxisY.Enabled = AxisEnabled.True;
+            chart_Force.ChartAreas[0].AxisX.Name = "时间";
+            chart_Force.ChartAreas[0].AxisY.Name = "力";
+            chart_Force.ChartAreas[0].AxisX.Title = "时间";
+            chart_Force.ChartAreas[0].AxisY.Title = "力 N";
+            chart_Force.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
+            chart_Force.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
+            chart_Force.ChartAreas[0].AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dot;
+
+            chart_Force.ChartAreas[0].CursorX.AutoScroll = true;
+            chart_Force.ChartAreas[0].CursorX.IsUserEnabled = true;
+            chart_Force.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
+            chart_Force.ChartAreas[0].CursorX.LineColor = Color.Blue;
+            chart_Force.ChartAreas[0].AxisX.ScrollBar.IsPositionedInside = true;
+
+            chart_Force.ChartAreas[0].CursorY.AutoScroll = true;
+            chart_Force.ChartAreas[0].CursorY.IsUserEnabled = true;
+            chart_Force.ChartAreas[0].CursorY.IsUserSelectionEnabled = true;
+            chart_Force.ChartAreas[0].CursorY.LineColor = Color.Blue;
+
             sp.DataReceived += sp_DataReceived;
         }
 
@@ -133,6 +177,7 @@ namespace MG_Motor_HostSof
                     btn_EnableMotor.Enabled = true;
                     btn_DataRecord.Enabled = true;
                     btn_SetOrigin.Enabled = true;
+                    btn_back_origin.Enabled = true;
 	             }
                 else if (btn_PortConn.Text == "断开连接")
 	            {
@@ -268,13 +313,13 @@ namespace MG_Motor_HostSof
                                         this.Torque = BitConverter.ToInt32(TorqueDataBuffer, 0)/1000f;
                                         ReceiveProcess.RECE_TorqueList.Add(this.Torque);
 
-                                        this.Force = (BitConverter.ToInt32(TorqueDataBuffer, 0))/5000f;
+                                        this.Force = (BitConverter.ToInt32(TorqueDataBuffer, 0))/50f;
                                         ReceiveProcess.RECE_ForceList.Add(this.Force);
 
                                         //横坐标用string，用datetime型不能进行缩放
-                                        ReceiveProcess.RECE_SpdTimeList.Add(DateTime.Now.ToString("HH:mm:ss"));
-                                        ReceiveProcess.RECE_TorqueTimeList.Add(DateTime.Now.ToString("HH:mm:ss"));
-                                        ReceiveProcess.RECE_SpdTimeList1.Add(DateTime.Now.ToString("HH:mm:ss"));
+                                        ReceiveProcess.RECE_SpdTimeList.Add(DateTime.Now.ToString("HH:mm:ss:fff"));
+                                        ReceiveProcess.RECE_TorqueTimeList.Add(DateTime.Now.ToString("HH:mm:ss:fff"));
+                                        ReceiveProcess.RECE_SpdTimeList1.Add(DateTime.Now.ToString("HH:mm:ss:fff"));
 
                                         //this.SpdRefList.Add(Convert.ToSingle(Form_Mode.SpdRef));       //将速度参考加入曲线，作为对比
 
@@ -384,6 +429,29 @@ namespace MG_Motor_HostSof
                 chart_Torqe.ChartAreas[0].AxisY.MajorGrid.Enabled = true;
             }
 
+            //绑定功角
+            lock(ReceiveProcess)
+            {
+                chart_Angle.Series[0].Points.DataBindXY(ReceiveProcess.RECE_SpdTimeList, ReceiveProcess.RECE_PFList);
+                chart_Angle.DataBind();
+            }
+
+            if (ReceiveProcess.RECE_PFList.Count>0)
+            {
+                chart_Angle.ChartAreas[0].AxisY.MajorGrid.Enabled = true;
+            }
+
+            //绑定力
+            lock(ReceiveProcess)
+            {
+                chart_Force.Series[0].Points.DataBindXY(ReceiveProcess.RECE_SpdTimeList, ReceiveProcess.RECE_ForceList);
+                chart_Force.DataBind();
+            }
+
+            if (ReceiveProcess.RECE_ForceList.Count>0)
+            {
+                chart_Force.ChartAreas[0].AxisY.MajorGrid.Enabled = true;
+            }
             lock (ReceiveProcess)
             {
                 while (ReceiveProcess.RECE_SpdList.Count>2000)
@@ -422,6 +490,7 @@ namespace MG_Motor_HostSof
                     //timer_RefreshChart.Start();
                     btn_ModeSelect.Enabled = false;
                     btn_SetOrigin.Enabled = false;
+                    btn_back_origin.Enabled = false;
 
                     sp.DiscardOutBuffer();
 
@@ -466,6 +535,7 @@ namespace MG_Motor_HostSof
 
                     btn_SetOrigin.Enabled = true;
                     btn_ModeSelect.Enabled = true;
+                    btn_back_origin.Enabled = true;
                     Form_Mode.RunningMode = 0;                  //恢复监听状态
                 }
             }
@@ -671,6 +741,12 @@ namespace MG_Motor_HostSof
             chart_Torqe.Series[0].Points.DataBindXY(ReceiveProcess.RECE_TorqueTimeList, ReceiveProcess.RECE_TorqueList);
             chart_Torqe.DataBind();
 
+            chart_Angle.Series[0].Points.DataBindXY(ReceiveProcess.RECE_SpdTimeList, ReceiveProcess.RECE_PFList);
+            chart_Angle.DataBind();
+
+            chart_Force.Series[0].Points.DataBindXY(ReceiveProcess.RECE_SpdTimeList, ReceiveProcess.RECE_ForceList);
+            chart_Force.DataBind();
+
             this.SendCnt = 0;
             this.ReceCnt = 0;
             ts_label_SendCnt.Text = "发送数据帧：" + SendCnt.ToString();
@@ -690,6 +766,10 @@ namespace MG_Motor_HostSof
             chart_Spd.ChartAreas[0].AxisY.ScaleView.ZoomReset();
             chart_Torqe.ChartAreas[0].AxisX.ScaleView.ZoomReset();
             chart_Torqe.ChartAreas[0].AxisY.ScaleView.ZoomReset();
+            chart_Angle.ChartAreas[0].AxisX.ScaleView.ZoomReset();
+            chart_Angle.ChartAreas[0].AxisY.ScaleView.ZoomReset();
+            chart_Force.ChartAreas[0].AxisX.ScaleView.ZoomReset();
+            chart_Force.ChartAreas[0].AxisY.ScaleView.ZoomReset();
         }
 
         /// <summary>
@@ -1299,7 +1379,7 @@ namespace MG_Motor_HostSof
                 else
                 {
                     this.Cursor = Cursors.Default;
-                    toolTip_spd.Hide(chart_Torqe);
+                    toolTip_torque.Hide(chart_Torqe);
                 }
             }
             catch (Exception)
@@ -1308,7 +1388,11 @@ namespace MG_Motor_HostSof
                 throw;
             }
         }
-
+        /// <summary>
+        /// 将当前位置设为原点
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_SetOrigin_Click(object sender, EventArgs e)
         {
             try
@@ -1329,6 +1413,87 @@ namespace MG_Motor_HostSof
                 throw;
             }
             
+        }
+        /// <summary>
+        /// 显示点的信息
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void chart_Angle_MouseMove(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                HitTestResult hit = chart_Angle.HitTest(e.X, e.Y);
+
+                if (hit.ChartElementType == ChartElementType.DataPoint)
+                {
+                    this.Cursor = Cursors.Cross;
+                    DataPoint dp_angle = hit.Series.Points[hit.PointIndex];
+                    //保留四位小数
+
+                    toolTip_Angle.SetToolTip(chart_Torqe, "时间 ：" + dp_angle.AxisLabel + Environment.NewLine + "功角 ：" + Math.Round(dp_angle.YValues[0], 4));
+                }
+                else
+                {
+                    this.Cursor = Cursors.Default;
+                    toolTip_Angle.Hide(chart_Angle);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        /// <summary>
+        /// 显示点的信息
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void chart_Force_MouseMove(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                HitTestResult hit = chart_Force.HitTest(e.X, e.Y);
+
+                if (hit.ChartElementType == ChartElementType.DataPoint)
+                {
+                    this.Cursor = Cursors.Cross;
+                    DataPoint dp_force = hit.Series.Points[hit.PointIndex];
+                    //保留四位小数
+
+                    toolTip_Force.SetToolTip(chart_Torqe, "时间 ：" + dp_force.AxisLabel + Environment.NewLine + "力 ：" + Math.Round(dp_force.YValues[0], 4));
+                }
+                else
+                {
+                    this.Cursor = Cursors.Default;
+                    toolTip_Force.Hide(chart_Torqe);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        /// <summary>
+        /// 回到原点
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button1_Click(object sender, EventArgs e)
+        {
+            sp.DiscardInBuffer();
+            byte[] command = cmd.StartCommand();
+            sp.Write(command, 0, command.Length);
+            this.SendCnt++;
+            ts_label_SendCnt.Text = "发送数据帧：" + SendCnt.ToString();
+
+            sp.DiscardInBuffer();
+            command = cmd.OriginCommand();
+            sp.Write(command, 0, command.Length);
+            this.SendCnt++;
+            ts_label_SendCnt.Text = "发送数据帧：" + SendCnt.ToString();
         }
 
     }

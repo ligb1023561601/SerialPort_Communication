@@ -36,6 +36,12 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_Close = new System.Windows.Forms.Button();
@@ -72,6 +78,12 @@
             this.toolTip_spd = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip_torque = new System.Windows.Forms.ToolTip(this.components);
             this.btn_SetOrigin = new System.Windows.Forms.Button();
+            this.chart_Angle = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chart_Force = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.toolTip_Angle = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip_Force = new System.Windows.Forms.ToolTip(this.components);
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_back_origin = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart_Spd)).BeginInit();
@@ -79,14 +91,19 @@
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_Torqe)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart_Angle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart_Force)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.Color.DodgerBlue;
             this.pictureBox1.Location = new System.Drawing.Point(-2, -2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(876, 140);
+            this.pictureBox1.Size = new System.Drawing.Size(1387, 140);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -104,11 +121,12 @@
             // 
             // btn_Close
             // 
+            this.btn_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Close.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Close.BackgroundImage")));
             this.btn_Close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_Close.FlatAppearance.BorderSize = 0;
             this.btn_Close.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_Close.Location = new System.Drawing.Point(842, -2);
+            this.btn_Close.Location = new System.Drawing.Point(1353, -2);
             this.btn_Close.Name = "btn_Close";
             this.btn_Close.Size = new System.Drawing.Size(32, 30);
             this.btn_Close.TabIndex = 2;
@@ -117,11 +135,12 @@
             // 
             // btn_Help
             // 
+            this.btn_Help.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Help.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Help.BackgroundImage")));
             this.btn_Help.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_Help.FlatAppearance.BorderSize = 0;
             this.btn_Help.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_Help.Location = new System.Drawing.Point(813, -2);
+            this.btn_Help.Location = new System.Drawing.Point(1324, -2);
             this.btn_Help.Name = "btn_Help";
             this.btn_Help.Size = new System.Drawing.Size(32, 30);
             this.btn_Help.TabIndex = 3;
@@ -141,6 +160,9 @@
             // 
             // chart_Spd
             // 
+            this.chart_Spd.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.chart_Spd.BackColor = System.Drawing.Color.Gainsboro;
             this.chart_Spd.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.HorizontalCenter;
             chartArea1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -153,7 +175,7 @@
             this.chart_Spd.ContextMenuStrip = this.contextMenuStrip1;
             legend1.Name = "Legend1";
             this.chart_Spd.Legends.Add(legend1);
-            this.chart_Spd.Location = new System.Drawing.Point(358, 140);
+            this.chart_Spd.Location = new System.Drawing.Point(3, 3);
             this.chart_Spd.Name = "chart_Spd";
             series1.BorderWidth = 2;
             series1.ChartArea = "ChartArea1";
@@ -162,7 +184,7 @@
             series1.LegendText = "转速";
             series1.Name = "Series1";
             this.chart_Spd.Series.Add(series1);
-            this.chart_Spd.Size = new System.Drawing.Size(516, 376);
+            this.chart_Spd.Size = new System.Drawing.Size(502, 362);
             this.chart_Spd.TabIndex = 5;
             this.chart_Spd.Text = "chart1";
             this.chart_Spd.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart_Spd_MouseMove);
@@ -197,7 +219,7 @@
             this.ts_label_SendCnt});
             this.statusStrip1.Location = new System.Drawing.Point(0, 879);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(873, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1386, 22);
             this.statusStrip1.TabIndex = 7;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -303,6 +325,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox1.Controls.Add(this.btn_DataRecord);
             this.groupBox1.Controls.Add(this.label_Force);
             this.groupBox1.Controls.Add(this.label_Torque);
@@ -394,6 +418,9 @@
             // 
             // chart_Torqe
             // 
+            this.chart_Torqe.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.chart_Torqe.BackColor = System.Drawing.Color.Gainsboro;
             this.chart_Torqe.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.HorizontalCenter;
             chartArea2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -406,16 +433,17 @@
             this.chart_Torqe.ContextMenuStrip = this.contextMenuStrip1;
             legend2.Name = "Legend1";
             this.chart_Torqe.Legends.Add(legend2);
-            this.chart_Torqe.Location = new System.Drawing.Point(357, 509);
+            this.chart_Torqe.Location = new System.Drawing.Point(3, 371);
             this.chart_Torqe.Name = "chart_Torqe";
             series2.BorderWidth = 2;
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Color = System.Drawing.Color.Red;
             series2.Legend = "Legend1";
             series2.LegendText = "转矩";
             series2.Name = "Series1";
             this.chart_Torqe.Series.Add(series2);
-            this.chart_Torqe.Size = new System.Drawing.Size(516, 367);
+            this.chart_Torqe.Size = new System.Drawing.Size(502, 362);
             this.chart_Torqe.TabIndex = 18;
             this.chart_Torqe.Text = "chart1";
             this.chart_Torqe.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart_Torqe_MouseMove);
@@ -431,15 +459,109 @@
             this.btn_SetOrigin.UseVisualStyleBackColor = true;
             this.btn_SetOrigin.Click += new System.EventHandler(this.btn_SetOrigin_Click);
             // 
+            // chart_Angle
+            // 
+            this.chart_Angle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.chart_Angle.BackColor = System.Drawing.Color.Gainsboro;
+            this.chart_Angle.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.HorizontalCenter;
+            chartArea3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            chartArea3.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.HorizontalCenter;
+            chartArea3.CursorX.IsUserEnabled = true;
+            chartArea3.CursorX.IsUserSelectionEnabled = true;
+            chartArea3.CursorY.Interval = 1E-05D;
+            chartArea3.Name = "ChartArea1";
+            this.chart_Angle.ChartAreas.Add(chartArea3);
+            this.chart_Angle.ContextMenuStrip = this.contextMenuStrip1;
+            legend3.Name = "Legend1";
+            this.chart_Angle.Legends.Add(legend3);
+            this.chart_Angle.Location = new System.Drawing.Point(511, 3);
+            this.chart_Angle.Name = "chart_Angle";
+            series3.BorderWidth = 2;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series3.Color = System.Drawing.Color.Lime;
+            series3.Legend = "Legend1";
+            series3.LegendText = "功角";
+            series3.Name = "Series1";
+            this.chart_Angle.Series.Add(series3);
+            this.chart_Angle.Size = new System.Drawing.Size(514, 362);
+            this.chart_Angle.TabIndex = 20;
+            this.chart_Angle.Text = "chart1";
+            this.chart_Angle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart_Angle_MouseMove);
+            // 
+            // chart_Force
+            // 
+            this.chart_Force.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.chart_Force.BackColor = System.Drawing.Color.Gainsboro;
+            this.chart_Force.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.HorizontalCenter;
+            chartArea4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            chartArea4.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.HorizontalCenter;
+            chartArea4.CursorX.IsUserEnabled = true;
+            chartArea4.CursorX.IsUserSelectionEnabled = true;
+            chartArea4.CursorY.Interval = 1E-05D;
+            chartArea4.Name = "ChartArea1";
+            this.chart_Force.ChartAreas.Add(chartArea4);
+            this.chart_Force.ContextMenuStrip = this.contextMenuStrip1;
+            legend4.Name = "Legend1";
+            this.chart_Force.Legends.Add(legend4);
+            this.chart_Force.Location = new System.Drawing.Point(511, 371);
+            this.chart_Force.Name = "chart_Force";
+            series4.BorderWidth = 2;
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series4.Color = System.Drawing.Color.Orange;
+            series4.Legend = "Legend1";
+            series4.LegendText = "力";
+            series4.Name = "Series1";
+            this.chart_Force.Series.Add(series4);
+            this.chart_Force.Size = new System.Drawing.Size(514, 362);
+            this.chart_Force.TabIndex = 21;
+            this.chart_Force.Text = "chart1";
+            this.chart_Force.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart_Force_MouseMove);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.50787F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.49213F));
+            this.tableLayoutPanel1.Controls.Add(this.chart_Spd, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.chart_Force, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.chart_Torqe, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.chart_Angle, 1, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(358, 140);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1028, 736);
+            this.tableLayoutPanel1.TabIndex = 23;
+            // 
+            // btn_back_origin
+            // 
+            this.btn_back_origin.Enabled = false;
+            this.btn_back_origin.Location = new System.Drawing.Point(190, 335);
+            this.btn_back_origin.Name = "btn_back_origin";
+            this.btn_back_origin.Size = new System.Drawing.Size(42, 52);
+            this.btn_back_origin.TabIndex = 24;
+            this.btn_back_origin.Text = "回到原点";
+            this.btn_back_origin.UseVisualStyleBackColor = true;
+            this.btn_back_origin.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(873, 901);
-            this.Controls.Add(this.chart_Spd);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(1386, 901);
+            this.Controls.Add(this.btn_back_origin);
             this.Controls.Add(this.btn_SetOrigin);
-            this.Controls.Add(this.chart_Torqe);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_EnableMotor);
@@ -452,11 +574,9 @@
             this.Controls.Add(this.btn_Close);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.HelpButton = true;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "Form_Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "测试系统";
@@ -469,6 +589,9 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_Torqe)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart_Angle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart_Force)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -512,6 +635,12 @@
         private System.Windows.Forms.ToolTip toolTip_spd;
         private System.Windows.Forms.ToolTip toolTip_torque;
         private System.Windows.Forms.Button btn_SetOrigin;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart_Angle;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart_Force;
+        private System.Windows.Forms.ToolTip toolTip_Angle;
+        private System.Windows.Forms.ToolTip toolTip_Force;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button btn_back_origin;
     }
 }
 
