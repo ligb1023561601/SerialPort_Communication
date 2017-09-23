@@ -26,3 +26,12 @@
 ![image](https://github.com/ligb1023561601/SerialPort-Commutation/raw/master/screenshot/微信图片_20170918132356.jpg)
 
 ![image](https://github.com/ligb1023561601/SerialPort-Commutation/raw/master/screenshot/微信图片_20170918132400.jpg)
+
+## 修改说明  
+
+添加了新的工作模式  
+
+添加了新的界面显示内容
+
+![image](https://github.com/ligb1023561601/SerialPort-Commutation/raw/master/screenshot/捕获.PNG)
+
