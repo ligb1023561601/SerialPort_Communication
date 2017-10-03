@@ -527,7 +527,11 @@ namespace MG_Motor_HostSof
                     this.SendCnt++;
                     Form_Origin.OriginAngle = 0;
                     Form_Origin.AngleOffSetBuf = 0;
-                    Form_Origin.AngleOffSetBuf = this.ReceiveProcess.RECE_PFList[this.ReceiveProcess.RECE_PFList.Count-1];
+                    if (this.ReceiveProcess.RECE_PFList.Count>0)
+                    {
+                        Form_Origin.AngleOffSetBuf = this.ReceiveProcess.RECE_PFList[this.ReceiveProcess.RECE_PFList.Count - 1]; 
+                    }
+                
                     ts_label_SendCnt.Text = "发送数据帧：" + SendCnt.ToString();
                     btn_EnableMotor.Text = "电机使能";
                     label6.ForeColor = Color.Red;
@@ -683,6 +687,7 @@ namespace MG_Motor_HostSof
                             SaveDataToExcel.Write(fs);
                             fs.Close();
                         }
+                        MessageBox.Show("保存完毕！");
                     }
                    
                 }

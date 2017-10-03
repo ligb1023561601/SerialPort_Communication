@@ -48,7 +48,7 @@ namespace MG_Motor_HostSof
             try
             {
                 SpdRef = tbx_SpdRef.Text;
-                EvenAmp = Convert.ToChar(tbx_even_amp.Text);
+                EvenAmp = (char)Convert.ToUInt16(tbx_even_amp.Text);
 
                 if (Math.Abs(Convert.ToInt16(EvenAmp))>60)
                 {
@@ -107,7 +107,7 @@ namespace MG_Motor_HostSof
                 {
                     errorProvider_Acc.Clear();
                 }
-                TriAmp = Convert.ToChar(tbx_tri_amp.Text);
+                TriAmp = (char)Convert.ToUInt16(tbx_tri_amp.Text);
                 if (Math.Abs(Convert.ToInt16(TriAmp))>60)
                 {
                     MessageBox.Show("输入的角度大于60°，请重新输入！");
@@ -143,7 +143,7 @@ namespace MG_Motor_HostSof
         {
             try
             {
-                SinPeak = Convert.ToChar(tbx_SinPeak.Text);
+                SinPeak = (char)Convert.ToUInt16(tbx_SinPeak.Text);
                 SinFre = (comboBox1.SelectedIndex+1).ToString();
 
                 //检查幅值范围
