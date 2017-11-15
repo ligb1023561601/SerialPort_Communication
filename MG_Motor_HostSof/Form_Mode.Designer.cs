@@ -30,21 +30,35 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rb_even_whole = new System.Windows.Forms.RadioButton();
+            this.rb_even_neg = new System.Windows.Forms.RadioButton();
+            this.rb_even_posi = new System.Windows.Forms.RadioButton();
+            this.tbx_even_amp = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_SpdRef = new System.Windows.Forms.Button();
             this.tbx_SpdRef = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rb_tri_whole = new System.Windows.Forms.RadioButton();
+            this.tbx_tri_amp = new System.Windows.Forms.TextBox();
+            this.rb_tri_neg = new System.Windows.Forms.RadioButton();
+            this.label9 = new System.Windows.Forms.Label();
+            this.rb_tri_pos = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
             this.btn_Acc = new System.Windows.Forms.Button();
             this.tbx_Acc = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.rb_sine_whole = new System.Windows.Forms.RadioButton();
             this.label7 = new System.Windows.Forms.Label();
+            this.rb_sine_neg = new System.Windows.Forms.RadioButton();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.rb_sine_pos = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btn_Sin = new System.Windows.Forms.Button();
             this.tbx_SinPeak = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.tbx_SpdRefTime = new System.Windows.Forms.TextBox();
             this.btn_Combine = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -54,20 +68,6 @@
             this.errorProvider_Fre = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider_Acc = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider_Combine = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label8 = new System.Windows.Forms.Label();
-            this.tbx_even_amp = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.tbx_tri_amp = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.rb_even_posi = new System.Windows.Forms.RadioButton();
-            this.rb_even_neg = new System.Windows.Forms.RadioButton();
-            this.rb_even_whole = new System.Windows.Forms.RadioButton();
-            this.rb_tri_whole = new System.Windows.Forms.RadioButton();
-            this.rb_tri_neg = new System.Windows.Forms.RadioButton();
-            this.rb_tri_pos = new System.Windows.Forms.RadioButton();
-            this.rb_sine_whole = new System.Windows.Forms.RadioButton();
-            this.rb_sine_neg = new System.Windows.Forms.RadioButton();
-            this.rb_sine_pos = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -94,6 +94,55 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "匀速模式（1）";
+            // 
+            // rb_even_whole
+            // 
+            this.rb_even_whole.AutoSize = true;
+            this.rb_even_whole.Location = new System.Drawing.Point(512, 68);
+            this.rb_even_whole.Name = "rb_even_whole";
+            this.rb_even_whole.Size = new System.Drawing.Size(59, 16);
+            this.rb_even_whole.TabIndex = 7;
+            this.rb_even_whole.TabStop = true;
+            this.rb_even_whole.Text = "正负轴";
+            this.rb_even_whole.UseVisualStyleBackColor = true;
+            // 
+            // rb_even_neg
+            // 
+            this.rb_even_neg.AutoSize = true;
+            this.rb_even_neg.Location = new System.Drawing.Point(512, 46);
+            this.rb_even_neg.Name = "rb_even_neg";
+            this.rb_even_neg.Size = new System.Drawing.Size(59, 16);
+            this.rb_even_neg.TabIndex = 6;
+            this.rb_even_neg.TabStop = true;
+            this.rb_even_neg.Text = "负半轴";
+            this.rb_even_neg.UseVisualStyleBackColor = true;
+            // 
+            // rb_even_posi
+            // 
+            this.rb_even_posi.AutoSize = true;
+            this.rb_even_posi.Location = new System.Drawing.Point(512, 20);
+            this.rb_even_posi.Name = "rb_even_posi";
+            this.rb_even_posi.Size = new System.Drawing.Size(59, 16);
+            this.rb_even_posi.TabIndex = 5;
+            this.rb_even_posi.TabStop = true;
+            this.rb_even_posi.Text = "正半轴";
+            this.rb_even_posi.UseVisualStyleBackColor = true;
+            // 
+            // tbx_even_amp
+            // 
+            this.tbx_even_amp.Location = new System.Drawing.Point(309, 50);
+            this.tbx_even_amp.Name = "tbx_even_amp";
+            this.tbx_even_amp.Size = new System.Drawing.Size(100, 21);
+            this.tbx_even_amp.TabIndex = 4;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(243, 53);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(53, 12);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "给定幅值";
             // 
             // label1
             // 
@@ -136,7 +185,56 @@
             this.groupBox2.Size = new System.Drawing.Size(780, 100);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "匀加/减速模式（2）";
+            this.groupBox2.Text = "匀加速模式（2）";
+            // 
+            // rb_tri_whole
+            // 
+            this.rb_tri_whole.AutoSize = true;
+            this.rb_tri_whole.Location = new System.Drawing.Point(512, 68);
+            this.rb_tri_whole.Name = "rb_tri_whole";
+            this.rb_tri_whole.Size = new System.Drawing.Size(59, 16);
+            this.rb_tri_whole.TabIndex = 10;
+            this.rb_tri_whole.TabStop = true;
+            this.rb_tri_whole.Text = "正负轴";
+            this.rb_tri_whole.UseVisualStyleBackColor = true;
+            // 
+            // tbx_tri_amp
+            // 
+            this.tbx_tri_amp.Location = new System.Drawing.Point(309, 50);
+            this.tbx_tri_amp.Name = "tbx_tri_amp";
+            this.tbx_tri_amp.Size = new System.Drawing.Size(100, 21);
+            this.tbx_tri_amp.TabIndex = 4;
+            // 
+            // rb_tri_neg
+            // 
+            this.rb_tri_neg.AutoSize = true;
+            this.rb_tri_neg.Location = new System.Drawing.Point(512, 46);
+            this.rb_tri_neg.Name = "rb_tri_neg";
+            this.rb_tri_neg.Size = new System.Drawing.Size(59, 16);
+            this.rb_tri_neg.TabIndex = 9;
+            this.rb_tri_neg.TabStop = true;
+            this.rb_tri_neg.Text = "负半轴";
+            this.rb_tri_neg.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(243, 53);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 12);
+            this.label9.TabIndex = 3;
+            this.label9.Text = "给定幅值";
+            // 
+            // rb_tri_pos
+            // 
+            this.rb_tri_pos.AutoSize = true;
+            this.rb_tri_pos.Location = new System.Drawing.Point(512, 20);
+            this.rb_tri_pos.Name = "rb_tri_pos";
+            this.rb_tri_pos.Size = new System.Drawing.Size(59, 16);
+            this.rb_tri_pos.TabIndex = 8;
+            this.rb_tri_pos.TabStop = true;
+            this.rb_tri_pos.Text = "正半轴";
+            this.rb_tri_pos.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -153,7 +251,7 @@
             this.btn_Acc.Name = "btn_Acc";
             this.btn_Acc.Size = new System.Drawing.Size(75, 23);
             this.btn_Acc.TabIndex = 1;
-            this.btn_Acc.Text = "匀加/减速工作";
+            this.btn_Acc.Text = "匀加速工作";
             this.btn_Acc.UseVisualStyleBackColor = true;
             this.btn_Acc.Click += new System.EventHandler(this.btn_Acc_Click);
             // 
@@ -182,6 +280,17 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "正弦跟踪模式（3）";
             // 
+            // rb_sine_whole
+            // 
+            this.rb_sine_whole.AutoSize = true;
+            this.rb_sine_whole.Location = new System.Drawing.Point(512, 68);
+            this.rb_sine_whole.Name = "rb_sine_whole";
+            this.rb_sine_whole.Size = new System.Drawing.Size(59, 16);
+            this.rb_sine_whole.TabIndex = 13;
+            this.rb_sine_whole.TabStop = true;
+            this.rb_sine_whole.Text = "正负轴";
+            this.rb_sine_whole.UseVisualStyleBackColor = true;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -190,6 +299,17 @@
             this.label7.Size = new System.Drawing.Size(119, 12);
             this.label7.TabIndex = 5;
             this.label7.Text = "以2π为基频进行分频";
+            // 
+            // rb_sine_neg
+            // 
+            this.rb_sine_neg.AutoSize = true;
+            this.rb_sine_neg.Location = new System.Drawing.Point(512, 46);
+            this.rb_sine_neg.Name = "rb_sine_neg";
+            this.rb_sine_neg.Size = new System.Drawing.Size(59, 16);
+            this.rb_sine_neg.TabIndex = 12;
+            this.rb_sine_neg.TabStop = true;
+            this.rb_sine_neg.Text = "负半轴";
+            this.rb_sine_neg.UseVisualStyleBackColor = true;
             // 
             // comboBox1
             // 
@@ -205,6 +325,17 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 20);
             this.comboBox1.TabIndex = 4;
+            // 
+            // rb_sine_pos
+            // 
+            this.rb_sine_pos.AutoSize = true;
+            this.rb_sine_pos.Location = new System.Drawing.Point(512, 20);
+            this.rb_sine_pos.Name = "rb_sine_pos";
+            this.rb_sine_pos.Size = new System.Drawing.Size(59, 16);
+            this.rb_sine_pos.TabIndex = 11;
+            this.rb_sine_pos.TabStop = true;
+            this.rb_sine_pos.Text = "正半轴";
+            this.rb_sine_pos.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -256,6 +387,15 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "组合模式";
             this.groupBox4.Visible = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(328, 80);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(41, 12);
+            this.label10.TabIndex = 6;
+            this.label10.Text = "以毫秒";
             // 
             // tbx_SpdRefTime
             // 
@@ -314,146 +454,6 @@
             // errorProvider_Combine
             // 
             this.errorProvider_Combine.ContainerControl = this;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(243, 53);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(53, 12);
-            this.label8.TabIndex = 3;
-            this.label8.Text = "给定幅值";
-            // 
-            // tbx_even_amp
-            // 
-            this.tbx_even_amp.Location = new System.Drawing.Point(309, 50);
-            this.tbx_even_amp.Name = "tbx_even_amp";
-            this.tbx_even_amp.Size = new System.Drawing.Size(100, 21);
-            this.tbx_even_amp.TabIndex = 4;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(243, 53);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(53, 12);
-            this.label9.TabIndex = 3;
-            this.label9.Text = "给定幅值";
-            // 
-            // tbx_tri_amp
-            // 
-            this.tbx_tri_amp.Location = new System.Drawing.Point(309, 50);
-            this.tbx_tri_amp.Name = "tbx_tri_amp";
-            this.tbx_tri_amp.Size = new System.Drawing.Size(100, 21);
-            this.tbx_tri_amp.TabIndex = 4;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(328, 80);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(41, 12);
-            this.label10.TabIndex = 6;
-            this.label10.Text = "以毫秒";
-            // 
-            // rb_even_posi
-            // 
-            this.rb_even_posi.AutoSize = true;
-            this.rb_even_posi.Location = new System.Drawing.Point(512, 20);
-            this.rb_even_posi.Name = "rb_even_posi";
-            this.rb_even_posi.Size = new System.Drawing.Size(59, 16);
-            this.rb_even_posi.TabIndex = 5;
-            this.rb_even_posi.TabStop = true;
-            this.rb_even_posi.Text = "正半轴";
-            this.rb_even_posi.UseVisualStyleBackColor = true;
-            // 
-            // rb_even_neg
-            // 
-            this.rb_even_neg.AutoSize = true;
-            this.rb_even_neg.Location = new System.Drawing.Point(512, 46);
-            this.rb_even_neg.Name = "rb_even_neg";
-            this.rb_even_neg.Size = new System.Drawing.Size(59, 16);
-            this.rb_even_neg.TabIndex = 6;
-            this.rb_even_neg.TabStop = true;
-            this.rb_even_neg.Text = "负半轴";
-            this.rb_even_neg.UseVisualStyleBackColor = true;
-            // 
-            // rb_even_whole
-            // 
-            this.rb_even_whole.AutoSize = true;
-            this.rb_even_whole.Location = new System.Drawing.Point(512, 68);
-            this.rb_even_whole.Name = "rb_even_whole";
-            this.rb_even_whole.Size = new System.Drawing.Size(59, 16);
-            this.rb_even_whole.TabIndex = 7;
-            this.rb_even_whole.TabStop = true;
-            this.rb_even_whole.Text = "正负轴";
-            this.rb_even_whole.UseVisualStyleBackColor = true;
-            // 
-            // rb_tri_whole
-            // 
-            this.rb_tri_whole.AutoSize = true;
-            this.rb_tri_whole.Location = new System.Drawing.Point(512, 68);
-            this.rb_tri_whole.Name = "rb_tri_whole";
-            this.rb_tri_whole.Size = new System.Drawing.Size(59, 16);
-            this.rb_tri_whole.TabIndex = 10;
-            this.rb_tri_whole.TabStop = true;
-            this.rb_tri_whole.Text = "正负轴";
-            this.rb_tri_whole.UseVisualStyleBackColor = true;
-            // 
-            // rb_tri_neg
-            // 
-            this.rb_tri_neg.AutoSize = true;
-            this.rb_tri_neg.Location = new System.Drawing.Point(512, 46);
-            this.rb_tri_neg.Name = "rb_tri_neg";
-            this.rb_tri_neg.Size = new System.Drawing.Size(59, 16);
-            this.rb_tri_neg.TabIndex = 9;
-            this.rb_tri_neg.TabStop = true;
-            this.rb_tri_neg.Text = "负半轴";
-            this.rb_tri_neg.UseVisualStyleBackColor = true;
-            // 
-            // rb_tri_pos
-            // 
-            this.rb_tri_pos.AutoSize = true;
-            this.rb_tri_pos.Location = new System.Drawing.Point(512, 20);
-            this.rb_tri_pos.Name = "rb_tri_pos";
-            this.rb_tri_pos.Size = new System.Drawing.Size(59, 16);
-            this.rb_tri_pos.TabIndex = 8;
-            this.rb_tri_pos.TabStop = true;
-            this.rb_tri_pos.Text = "正半轴";
-            this.rb_tri_pos.UseVisualStyleBackColor = true;
-            // 
-            // rb_sine_whole
-            // 
-            this.rb_sine_whole.AutoSize = true;
-            this.rb_sine_whole.Location = new System.Drawing.Point(512, 68);
-            this.rb_sine_whole.Name = "rb_sine_whole";
-            this.rb_sine_whole.Size = new System.Drawing.Size(59, 16);
-            this.rb_sine_whole.TabIndex = 13;
-            this.rb_sine_whole.TabStop = true;
-            this.rb_sine_whole.Text = "正负轴";
-            this.rb_sine_whole.UseVisualStyleBackColor = true;
-            // 
-            // rb_sine_neg
-            // 
-            this.rb_sine_neg.AutoSize = true;
-            this.rb_sine_neg.Location = new System.Drawing.Point(512, 46);
-            this.rb_sine_neg.Name = "rb_sine_neg";
-            this.rb_sine_neg.Size = new System.Drawing.Size(59, 16);
-            this.rb_sine_neg.TabIndex = 12;
-            this.rb_sine_neg.TabStop = true;
-            this.rb_sine_neg.Text = "负半轴";
-            this.rb_sine_neg.UseVisualStyleBackColor = true;
-            // 
-            // rb_sine_pos
-            // 
-            this.rb_sine_pos.AutoSize = true;
-            this.rb_sine_pos.Location = new System.Drawing.Point(512, 20);
-            this.rb_sine_pos.Name = "rb_sine_pos";
-            this.rb_sine_pos.Size = new System.Drawing.Size(59, 16);
-            this.rb_sine_pos.TabIndex = 11;
-            this.rb_sine_pos.TabStop = true;
-            this.rb_sine_pos.Text = "正半轴";
-            this.rb_sine_pos.UseVisualStyleBackColor = true;
             // 
             // Form_Mode
             // 

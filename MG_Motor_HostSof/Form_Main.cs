@@ -320,6 +320,7 @@ namespace MG_Motor_HostSof
                                         ReceiveProcess.RECE_SpdTimeList.Add(DateTime.Now.ToString("HH:mm:ss:fff"));
                                         ReceiveProcess.RECE_TorqueTimeList.Add(DateTime.Now.ToString("HH:mm:ss:fff"));
                                         ReceiveProcess.RECE_SpdTimeList1.Add(DateTime.Now.ToString("HH:mm:ss:fff"));
+                                        ReceiveProcess.RECE_PFTimeList.Add(DateTime.Now.ToString("HH:mm:ss:fff"));
 
                                         //this.SpdRefList.Add(Convert.ToSingle(Form_Mode.SpdRef));       //将速度参考加入曲线，作为对比
 
@@ -352,10 +353,11 @@ namespace MG_Motor_HostSof
         private void RemoveData()
         {
             ReceiveProcess.RECE_SpdList.RemoveAt(0);
-            ReceiveProcess.RECE_PFList.Remove(0);
+            ReceiveProcess.RECE_PFList.RemoveAt(0);
             ReceiveProcess.RECE_ForceList.RemoveAt(0);
             ReceiveProcess.RECE_TorqueList.RemoveAt(0);
             ReceiveProcess.RECE_SpdTimeList.RemoveAt(0);
+            ReceiveProcess.RECE_PFTimeList.RemoveAt(0);
             ReceiveProcess.RECE_TorqueTimeList.RemoveAt(0);
             //this.SpdRefList.RemoveAt(0);
         }
@@ -429,10 +431,9 @@ namespace MG_Motor_HostSof
                 chart_Torqe.ChartAreas[0].AxisY.MajorGrid.Enabled = true;
             }
 
-            //绑定功角
             lock(ReceiveProcess)
             {
-                chart_Angle.Series[0].Points.DataBindXY(ReceiveProcess.RECE_SpdTimeList, ReceiveProcess.RECE_PFList);
+                chart_Angle.Series[0].Points.DataBindXY(ReceiveProcess.RECE_PFTimeList, ReceiveProcess.RECE_PFList);
                 chart_Angle.DataBind();
             }
 
@@ -444,7 +445,7 @@ namespace MG_Motor_HostSof
             //绑定力
             lock(ReceiveProcess)
             {
-                chart_Force.Series[0].Points.DataBindXY(ReceiveProcess.RECE_SpdTimeList, ReceiveProcess.RECE_ForceList);
+                chart_Force.Series[0].Points.DataBindXY(ReceiveProcess.RECE_PFTimeList, ReceiveProcess.RECE_ForceList);
                 chart_Force.DataBind();
             }
 
@@ -527,11 +528,14 @@ namespace MG_Motor_HostSof
                     this.SendCnt++;
                     Form_Origin.OriginAngle = 0;
                     Form_Origin.AngleOffSetBuf = 0;
-                    if (this.ReceiveProcess.RECE_PFList.Count>0)
+                    lock (ReceiveProcess)
                     {
-                        Form_Origin.AngleOffSetBuf = this.ReceiveProcess.RECE_PFList[this.ReceiveProcess.RECE_PFList.Count - 1]; 
-                    }
+                        if (this.ReceiveProcess.RECE_PFList.Count > 0)
+                        {
+                            Form_Origin.AngleOffSetBuf = this.ReceiveProcess.RECE_PFList[this.ReceiveProcess.RECE_PFList.Count - 1];
+                        }
                 
+                    }
                     ts_label_SendCnt.Text = "发送数据帧：" + SendCnt.ToString();
                     btn_EnableMotor.Text = "电机使能";
                     label6.ForeColor = Color.Red;
@@ -736,6 +740,7 @@ namespace MG_Motor_HostSof
             ReceiveProcess.RECE_TorqueList.Clear();
             ReceiveProcess.RECE_TorqueTimeList.Clear();
             ReceiveProcess.RECE_PFList.Clear();
+            ReceiveProcess.RECE_PFTimeList.Clear();
             ReceiveProcess.RECE_ForceList.Clear();
             this.SpdRefList.Clear();
 
@@ -746,10 +751,10 @@ namespace MG_Motor_HostSof
             chart_Torqe.Series[0].Points.DataBindXY(ReceiveProcess.RECE_TorqueTimeList, ReceiveProcess.RECE_TorqueList);
             chart_Torqe.DataBind();
 
-            chart_Angle.Series[0].Points.DataBindXY(ReceiveProcess.RECE_SpdTimeList, ReceiveProcess.RECE_PFList);
+            chart_Angle.Series[0].Points.DataBindXY(ReceiveProcess.RECE_PFTimeList, ReceiveProcess.RECE_PFList);
             chart_Angle.DataBind();
 
-            chart_Force.Series[0].Points.DataBindXY(ReceiveProcess.RECE_SpdTimeList, ReceiveProcess.RECE_ForceList);
+            chart_Force.Series[0].Points.DataBindXY(ReceiveProcess.RECE_PFTimeList, ReceiveProcess.RECE_ForceList);
             chart_Force.DataBind();
 
             this.SendCnt = 0;
@@ -1436,7 +1441,7 @@ namespace MG_Motor_HostSof
                     DataPoint dp_angle = hit.Series.Points[hit.PointIndex];
                     //保留四位小数
 
-                    toolTip_Angle.SetToolTip(chart_Torqe, "时间 ：" + dp_angle.AxisLabel + Environment.NewLine + "功角 ：" + Math.Round(dp_angle.YValues[0], 4));
+                    toolTip_Angle.SetToolTip(chart_Angle, "时间 ：" + dp_angle.AxisLabel + Environment.NewLine + "功角 ：" + Math.Round(dp_angle.YValues[0], 4));
                 }
                 else
                 {
@@ -1467,12 +1472,12 @@ namespace MG_Motor_HostSof
                     DataPoint dp_force = hit.Series.Points[hit.PointIndex];
                     //保留四位小数
 
-                    toolTip_Force.SetToolTip(chart_Torqe, "时间 ：" + dp_force.AxisLabel + Environment.NewLine + "力 ：" + Math.Round(dp_force.YValues[0], 4));
+                    toolTip_Force.SetToolTip(chart_Force, "时间 ：" + dp_force.AxisLabel + Environment.NewLine + "力 ：" + Math.Round(dp_force.YValues[0], 4));
                 }
                 else
                 {
                     this.Cursor = Cursors.Default;
-                    toolTip_Force.Hide(chart_Torqe);
+                    toolTip_Force.Hide(chart_Force);
                 }
             }
             catch (Exception)

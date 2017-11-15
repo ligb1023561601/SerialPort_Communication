@@ -34,6 +34,7 @@ namespace MG_Motor_HostSof
         //给定转速的横坐标
         public List<string> RECE_SpdTimeList1 = new List<string>();
         public List<string> RECE_TorqueTimeList = new List<string>();
+        public List<string> RECE_PFTimeList = new List<string>();
 
     }
 }
